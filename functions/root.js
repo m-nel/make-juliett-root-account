@@ -7,9 +7,11 @@ module.exports = (config) => {
     })
 
     const ApiCalls = {
-        getAccount: () => client.get(`account`).then((response) => response.data).catch(console.error),
+        getAccount: () => client.get(`account`).then(grabData).catch(console.error),
+        listTags: () => client.get(`tags`).then(grabData).catch(console.error),
     }
 
     return ApiCalls
 }
 
+const grabData = (response) => response.data

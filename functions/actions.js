@@ -9,8 +9,15 @@ module.exports = (config) => {
         app.tell(`You have ${balance}`)
     }
 
+    async function listTags(app) {
+        const tags = await rootApi.listTags()
+        const tagNames = tags.map((tag) => tag.name).join(', ')
+        app.tell(`You have the following tags: ${tagNames}`)
+    }
+
     return new Map([
         ['get_balance', getBalance],
+        ['list_tags', listTags],
     ])
 }
 
